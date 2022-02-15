@@ -1,8 +1,10 @@
 // import Sequalize constructor
 const Sequalize = require('sequalize');
 
+require('dotenv').config();
+
 // create database connection
-const sequalize = new Sequalize('tech_blog_db', 'username', 'password', {
+const sequalize = new Sequalize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
     host: 'localhost',
     dialect: 'mysql',
     port: 3306
