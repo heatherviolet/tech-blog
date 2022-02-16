@@ -1,5 +1,6 @@
-const { Model, DataTypes } = require('sequalize');
-const sequalize = require('../config/connection');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 // creates User model
 class User extends Model {};
@@ -33,7 +34,19 @@ User.init({
     }
 },
 {
-    sequalize,
+    hooks: {
+        async beforeCreate(newUserData) {
+            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+            return newUserData;
+          },
+    // set up beforeUpdate lifecycle "hook" functionality
+        async beforeUpdate(updatedUserData) {
+            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            return updatedUserData;
+    }
+
+    },      
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
