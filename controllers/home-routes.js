@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
         else {
           post = { post: false };
         }
-        res.render('homepage', post);
+        res.render('homepage', { posts });
       })
       .catch(err => {
         console.log(err);
