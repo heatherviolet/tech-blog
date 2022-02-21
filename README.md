@@ -1,1 +1,2 @@
 # tech-blog
+This blog was created with the Model-View-Controller paradigm. I used express-handlebars, MySQL2, Sequelize, Express.js, dotenv, bcrypy, express-session, and connect-session sequalize npm packages to create the website. The website is deployed to heroku. A user is able to view blog posts on the homepage. They are also able to login/sign up. After a user logs in they are able to create and comment on posts.
