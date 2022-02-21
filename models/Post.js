@@ -17,10 +17,7 @@ Post.init(
         },
         post_text: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isText: true
-            }
+            allowNull: false
         }
     },
     {
