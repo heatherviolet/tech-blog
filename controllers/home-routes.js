@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
         else {
           post = { post: false };
         }
-        res.render('homepage', { posts });
+        res.render('homepage', { posts, loggedIn: req. session.loggedIn });
       })
       .catch(err => {
         console.log(err);
@@ -78,7 +78,7 @@ router.get('/', (req, res) => {
   
         const post = dbPostData.get({ plain: true });
   
-        res.render('homepage', {
+        res.render('single-post', {
           post,
           loggedIn: req.session.loggedIn
         });
